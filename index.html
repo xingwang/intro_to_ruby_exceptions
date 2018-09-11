@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Intro to failing in Ruby</h2>
+					<p>Xing Wang</p>
+				</section>
+				<section>
+					<h3>Exceptions</h3>
+					<img src="./assets/exceptions.png" class="fragment fade-in" />
+				</section>
+				<section>
+					<h3>How to create an error</h3>
+					<pre><code data-trim data-noescape>
+						def aaron_can_i_have_a_tshirt
+						 <span class="fragment fade-in">raise 'lame excuse given'</span>
+						end
+
+						aaron_can_i_have_a_tshirt
+					</code></pre>
+				</section>
+				<section>
+					<h3>What about a specific error?</h3>
+					<pre><code data-trim data-noescape>
+						def aaron_can_i_have_a_tshirt(answer)
+						 <span class="fragment fade-in">raise <span class="fragment fade-in">ArgumentError,</span> 'lame excuse given'</span>
+						end
+
+						aaron_can_i_have_a_tshirt(answer)
+					</code></pre>
+				</section>
+				<section>
+					<h3>Handling an exception</h3>
+					<pre><code data-trim data-noescape>
+						def aaron_can_i_have_a_tshirt
+						 <span class="fragment fade-in">begin</span>
+						  raise 'Wrong size tshirt error'
+						 <span class="fragment fade-in">rescue
+						  puts 'Found right size tshirt after several weeks'
+						 end</span>
+						end
+
+						aaron_can_i_have_a_tshirt
+					</code></pre>
+				</section>
+				<section>
+					<h3>Handling a specific error</h3>
+					<pre><code data-trim data-noescape>
+						def aaron_can_i_have_a_tshirt
+						 begin
+						  raise IndexError, 'Wrong size tshirt error'
+						 rescue <span class="fragment fade-in">IndexError</span>
+						  puts 'Lame IndexError excuse given'
+						 end
+						end
+
+						aaron_can_i_have_a_tshirt
+					</code></pre>
+				</section>
+				<section>
+					<h3>What else can we do?</h3>
+					<pre><code data-trim data-noescape>
+						def aaron_can_i_have_a_tshirt
+						 begin
+						  puts 'I have your tshirt'
+						 <span class="fragment fade-in">rescue TypeError => e
+						  puts "Deflect with #{e.message}"</span>
+						 <span class="fragment fade-in">rescue => e
+						  puts "Deflect with #{e.backtrace}"</span>
+						 <span class="fragment fade-in">else
+						  puts 'Found right size tshirt after several weeks'</span>
+						 <span class="fragment fade-in">ensure
+						  puts 'I will get my tshirt'</span>
+						 end
+						end
+
+						aaron_can_i_have_a_tshirt
+					</code></pre>
+				</section>
+				<section>
+					<h3>Why not just always rescue Exception?</h3>
+					<pre><code data-trim data-noescape>
+					<span class="fragment fade-in" data-fragment-index="1">def aaron_can_i_have_a_tshirt</span>
+					 <span class="fragment fade-in" data-fragment-index="2">while 1</span>
+					  <span class="fragment fade-in" data-fragment-index="1">begin</span>
+					   <span class="fragment fade-in" data-fragment-index="2">sleep 1</span>
+					  <span class="fragment fade-in" data-fragment-index="1">rescue Exception</span>
+					   <span class="fragment fade-in" data-fragment-index="2">puts "I will never die and you will never get your tshirt!"</span>
+					  <span class="fragment fade-in" data-fragment-index="1">end</span>
+					 <span class="fragment fade-in" data-fragment-index="2">end</span>
+					<span class="fragment fade-in" data-fragment-index="1">end
+
+					aaron_can_i_have_a_tshirt</span>
+					</code></pre>
+				</section>
+				<section>
+					<h3>Now what?</h3>
+					<pre><code data-trim data-noescape>
+					def aaron_can_i_have_a_tshirt
+					 <span class="fragment fade-in" data-fragment-index="2">retries = 1</span>
+					 begin
+					  raise 'Wrong size error'
+					 rescue
+					  <span class="fragment fade-in" data-fragment-index="3">if retries < 3
+					   puts 'delay tactic'
+					   retries += 1</span>
+					   <span class="fragment fade-in" data-fragment-index="1">retry</span>
+					  <span class="fragment fade-in"data-fragment-index="3">end</span>
+					  puts 'Found right size tshirt after several weeks'
+					 end
+					end
+
+					aaron_can_i_have_a_tshirt
+					</code></pre>
+				</section>
+				<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+				</section>
+				<section>
+					<h3>What about throw... catch?</h3>
+					<pre><code data-trim data-noescape>
+					<span class="fragment fade-in" data-fragment-index="1">def aaron_can_i_have_a_tshirt</span>
+					 <span class="fragment fade-in" data-fragment-index="1">catch (:tshirt) do</span>
+					  <span class="fragment fade-in" data-fragment-index="2">for a in 1..1000 do
+					   for b in 1..1000 do
+					    if (a == 5 && b == 70)</span>
+					     <span class="fragment fade-in" data-fragment-index="1">puts 'throwing tshirt'
+					     throw :tshirt</span>
+					    <span class="fragment fade-in" data-fragment-index="2">end
+					   end
+					  end</span>
+					 <span class="fragment fade-in" data-fragment-index="1">end</span>
+					 <span class="fragment fade-in" data-fragment-index="1">puts 'tshirt has been acquired'
+					end
+
+					aaron_can_i_have_a_tshirt</span>
+					</code></pre>
+				</section>
+				<section>
+					<h3>Questions...</h3>
+					<span class="fragment fade-in">(for Aaron?)</span>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true }
+				],
+				transition: 'convex'
+			});
+		</script>
+	</body>
+</html>

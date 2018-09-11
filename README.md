@@ -1,1 +1,5 @@
-# okc_ruby_lightning_talk
+## Intro to failing in Ruby
+
+Lightning talk for OKC Ruby.
+
+Uses reveal.js (http://revealjs.com/).

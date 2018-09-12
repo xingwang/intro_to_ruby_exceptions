@@ -67,18 +67,24 @@
 					</code></pre>
 				</section>
 				<section>
-					<h3>Handling a specific error</h3>
-					<pre><code data-trim data-noescape>
-						def aaron_can_i_have_a_tshirt
-						 begin
-						  raise IndexError, 'Wrong size tshirt error'
-						 rescue <span class="fragment fade-in">IndexError</span>
-						  puts 'Lame IndexError excuse given'
-						 end
-						end
+					<section>
+						<h3>Handling a specific error</h3>
+						<pre><code data-trim data-noescape>
+							def aaron_can_i_have_a_tshirt
+							begin
+							  raise IndexError, 'Wrong size tshirt error'
+							 rescue <span class="fragment fade-in">IndexError</span>
+							  puts 'Lame IndexError excuse given'
+							 end
+							end
 
-						aaron_can_i_have_a_tshirt
-					</code></pre>
+							aaron_can_i_have_a_tshirt
+						</code></pre>
+					</section>
+					<section>
+						<h3>Exceptions</h3>
+						<img src="./assets/exceptions.png" />
+					</section>
 				</section>
 				<section>
 					<h3>What else can we do?</h3>
@@ -87,7 +93,7 @@
 						 begin
 						  puts 'I have your tshirt'
 						 <span class="fragment fade-out" data-fragment-index="5"><span class="fragment fade-in" data-fragment-index="1">rescue TypeError => e
-						  puts "Deflect with #{e.message}"</span>
+						  puts "Deflect with #{e.inspect}"</span>
 						 <span class="fragment fade-in" data-fragment-index="2">rescue => e
 						  puts "Deflect with #{e.backtrace}"</span>
 						 <span class="fragment fade-in" data-fragment-index="3">else
@@ -101,20 +107,27 @@
 					</code></pre>
 				</section>
 				<section>
-					<h3>Why not just always rescue Exception?</h3>
-					<pre><code data-trim data-noescape>
-					<span class="fragment fade-in" data-fragment-index="1">def aaron_can_i_have_a_tshirt</span>
-					 <span class="fragment fade-in" data-fragment-index="2">while 1</span>
-					  <span class="fragment fade-in" data-fragment-index="1">begin</span>
-					   <span class="fragment fade-in" data-fragment-index="2">sleep 1</span>
-					  <span class="fragment fade-in" data-fragment-index="1">rescue Exception</span>
-					   <span class="fragment fade-in" data-fragment-index="2">puts "I will never die and you will never get your tshirt!"</span>
-					  <span class="fragment fade-in" data-fragment-index="1">end</span>
-					 <span class="fragment fade-in" data-fragment-index="2">end</span>
-					<span class="fragment fade-in" data-fragment-index="1">end
+					<section>
+						<h3>Why not just always rescue Exception?</h3>
+						<pre><code data-trim data-noescape>
+						<span class="fragment fade-in" data-fragment-index="1">def aaron_can_i_have_a_tshirt</span>
+						 <span class="fragment fade-in" data-fragment-index="2">while 1</span>
+						  <span class="fragment fade-in" data-fragment-index="1">begin</span>
+						   <span class="fragment fade-in" data-fragment-index="2">sleep 1</span>
+						  <span class="fragment fade-in" data-fragment-index="1">rescue Exception</span>
+						   <span class="fragment fade-in" data-fragment-index="2">puts "I will never die and you will never get your tshirt!"</span>
+						  <span class="fragment fade-in" data-fragment-index="1">end</span>
+						 <span class="fragment fade-in" data-fragment-index="2">end</span>
+						<span class="fragment fade-in" data-fragment-index="1">end
 
-					aaron_can_i_have_a_tshirt</span>
-					</code></pre>
+						aaron_can_i_have_a_tshirt</span>
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Exceptions</h3>
+						<img src="./assets/exceptions.png" />
+					</section>
 				</section>
 				<section>
 					<h3>Now what?</h3>
@@ -134,26 +147,6 @@
 					end
 
 					aaron_can_i_have_a_tshirt
-					</code></pre>
-				</section>
-				<section>
-					<h3>What about throw... catch?</h3>
-					<pre><code data-trim data-noescape>
-					<span class="fragment fade-in" data-fragment-index="1">def aaron_can_i_have_a_tshirt</span>
-					 <span class="fragment fade-in" data-fragment-index="1">catch (:tshirt) do</span>
-					  <span class="fragment fade-in" data-fragment-index="2">for a in 1..1000 do
-					   for b in 1..1000 do
-					    if (a == 5 && b == 70)</span>
-					     <span class="fragment fade-in" data-fragment-index="1">puts 'throwing tshirt'
-					     throw :tshirt</span>
-					    <span class="fragment fade-in" data-fragment-index="2">end
-					   end
-					  end</span>
-					 <span class="fragment fade-in" data-fragment-index="1">end</span>
-					 <span class="fragment fade-in" data-fragment-index="1">puts 'tshirt has been acquired'
-					end
-
-					aaron_can_i_have_a_tshirt</span>
 					</code></pre>
 				</section>
 				<section>

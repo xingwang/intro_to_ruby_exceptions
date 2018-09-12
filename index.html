@@ -86,13 +86,13 @@
 						def aaron_can_i_have_a_tshirt
 						 begin
 						  puts 'I have your tshirt'
-						 <span class="fragment fade-in">rescue TypeError => e
+						 <span class="fragment fade-out" data-fragment-index="5"><span class="fragment fade-in" data-fragment-index="1">rescue TypeError => e
 						  puts "Deflect with #{e.message}"</span>
-						 <span class="fragment fade-in">rescue => e
+						 <span class="fragment fade-in" data-fragment-index="2">rescue => e
 						  puts "Deflect with #{e.backtrace}"</span>
-						 <span class="fragment fade-in">else
-						  puts 'Found right size tshirt after several weeks'</span>
-						 <span class="fragment fade-in">ensure
+						 <span class="fragment fade-in" data-fragment-index="3">else
+						  puts 'Found right size tshirt after several weeks'</span></span>
+						 <span class="fragment fade-in" data-fragment-index="4">ensure
 						  puts 'I will get my tshirt'</span>
 						 end
 						end
@@ -136,8 +136,6 @@
 					aaron_can_i_have_a_tshirt
 					</code></pre>
 				</section>
-				<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-				</section>
 				<section>
 					<h3>What about throw... catch?</h3>
 					<pre><code data-trim data-noescape>
@@ -157,6 +155,19 @@
 
 					aaron_can_i_have_a_tshirt</span>
 					</code></pre>
+				</section>
+				<section>
+					<h3>That's all... right?</h3>
+					<ul>
+						<li class="fragment fade-in">Inline rescue</li>
+						<li class="fragment fade-in">rescue/ensure in any block</li>
+						<li class="fragment fade-in">global variables $! and $@</li>
+						<li class="fragment fade-in">error handling in at_exit</li>
+						<li class="fragment fade-in">error handling for Thread</li>
+						<li class="fragment fade-in">... and more!</li>
+					</ul>
+				</section>
+				<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
 				</section>
 				<section>
 					<h3>Questions...</h3>

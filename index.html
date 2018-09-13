@@ -36,51 +36,27 @@
 					<h3>How to create an error</h3>
 					<pre><code data-trim data-noescape>
 						def aaron_can_i_have_a_tshirt
-						 <span class="fragment fade-in">raise <span class="fragment fade-in">'lame excuse given'</span></span>
+						 <span class="fragment fade-in">raise</span> <span class="fragment fade-in">ArgumentError</span><span class="fragment fade-in">, 'lame excuse given'</span>
 						end
 
 						aaron_can_i_have_a_tshirt
 					</code></pre>
 				</section>
 				<section>
-					<h3>What about a specific error?</h3>
-					<pre><code data-trim data-noescape>
-						def aaron_can_i_have_a_tshirt(answer)
-						 <span class="fragment fade-in">raise <span class="fragment fade-in">ArgumentError,</span> 'lame excuse given'</span>
-						end
-
-						aaron_can_i_have_a_tshirt(answer)
-					</code></pre>
-				</section>
-				<section>
+				 <section>
 					<h3>Handling an exception</h3>
 					<pre><code data-trim data-noescape>
 						def aaron_can_i_have_a_tshirt
 						 <span class="fragment fade-in" data-fragment-index="1">begin</span>
-						  raise 'Wrong size tshirt error'
-						 <span class="fragment fade-in" data-fragment-index="2">rescue
-						  puts 'Found right size tshirt after several weeks'</span>
+						  raise <span class="fragment fade-in" data-fragment-index="3">IndexError</span>
+						 <span class="fragment fade-in" data-fragment-index="2">rescue </span><span class="fragment fade-in" data-fragment-index="3">IndexError</span>
+						  <span class="fragment fade-in" data-fragment-index="2">puts 'Found right size tshirt after several weeks'</span>
 						 <span class="fragment fade-in" data-fragment-index="1">end</span>
 						end
 
 						aaron_can_i_have_a_tshirt
 					</code></pre>
-				</section>
-				<section>
-					<section>
-						<h3>Handling a specific error</h3>
-						<pre><code data-trim data-noescape>
-							def aaron_can_i_have_a_tshirt
-							begin
-							  raise IndexError, 'Wrong size tshirt error'
-							 rescue <span class="fragment fade-in">IndexError</span>
-							  puts 'Lame IndexError excuse given'
-							 end
-							end
-
-							aaron_can_i_have_a_tshirt
-						</code></pre>
-					</section>
+				 </section>
 					<section>
 						<h3>Exceptions</h3>
 						<img src="./assets/exceptions.png" />

@@ -36,7 +36,7 @@
 					<h3>How to create an error</h3>
 					<pre><code data-trim data-noescape>
 						def aaron_can_i_have_a_tshirt
-						 <span class="fragment fade-in">raise 'lame excuse given'</span>
+						 <span class="fragment fade-in">raise <span class="fragment fade-in">'lame excuse given'</span></span>
 						end
 
 						aaron_can_i_have_a_tshirt
@@ -56,11 +56,11 @@
 					<h3>Handling an exception</h3>
 					<pre><code data-trim data-noescape>
 						def aaron_can_i_have_a_tshirt
-						 <span class="fragment fade-in">begin</span>
+						 <span class="fragment fade-in" data-fragment-index="1">begin</span>
 						  raise 'Wrong size tshirt error'
-						 <span class="fragment fade-in">rescue
-						  puts 'Found right size tshirt after several weeks'
-						 end</span>
+						 <span class="fragment fade-in" data-fragment-index="2">rescue
+						  puts 'Found right size tshirt after several weeks'</span>
+						 <span class="fragment fade-in" data-fragment-index="1">end</span>
 						end
 
 						aaron_can_i_have_a_tshirt
